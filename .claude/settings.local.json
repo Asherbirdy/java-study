@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn dependency:resolve -q)",
+      "Bash(./mvnw dependency:resolve -q)"
+    ]
+  }
+}
