@@ -64,10 +64,21 @@ public class MyStudent {
 
     @GetMapping("/students/{studentId}")
     public Student select(@PathVariable String studentId){
+        String countSql = "SELECT count(*) from student";
+        Map<String, Object> countMap = new HashMap<>();
+        Integer count = namedParameterJdbcTemplate.queryForObject(countSql,countMap,Integer.class);
+
+        System.out.println("student table總數量:" + count);
+
         String sql = "SELECT id, name FROM student WHERE id = :studentId";
         Map<String, Object> map = new HashMap<>();
         map.put("studentId",studentId);
         List<Student> list = namedParameterJdbcTemplate.query(sql, map, new StudentRowMapper());
-        return list.get(0);
+        if(list.size() > 0 ){
+            return list.get(0);
+        } else {
+            return null;
+        }
     }
+
 }
