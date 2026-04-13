@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.example.demo.mapper;
 
+import com.example.demo.model.Student;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.lang.Nullable;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
